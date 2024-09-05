@@ -1,7 +1,12 @@
 <?php
-header('Access-Control-Allow-Origin: *'); // Permitir todas las orígenes
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Permitir los métodos HTTP
-header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Permitir las cabeceras
+// Permitir solicitudes desde cualquier origen
+header("Access-Control-Allow-Origin: *");
+
+// Permitir los métodos de solicitud que se utilizarán
+header("Access-Control-Allow-Methods:GET, POST, OPTIONS");
+
+// Permitir ciertos encabezados en las solicitudes preflight OPTIONS, incluido Content-Type
+header("Access-Control-Allow-Headers: Content-Type");
 include 'conexion.php';
 
 $sql = "SELECT nombre FROM ciudades order by nombre";
