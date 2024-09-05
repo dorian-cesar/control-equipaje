@@ -1,6 +1,8 @@
 <?php
 include 'conexion.php';
 
+date_default_timezone_set('America/Santiago');
+
 $rut = $_POST['rut'];
 $nombre = $_POST['nombre'];
 $origen = $_POST['origen'];
