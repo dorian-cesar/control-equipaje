@@ -1,5 +1,4 @@
 <?php
-
 header('Access-Control-Allow-Origin: *'); // Permitir todas las orígenes
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Permitir los métodos HTTP
 header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Permitir las cabeceras
