@@ -1,7 +1,10 @@
 <?php
-header('Access-Control-Allow-Origin: *'); // Permitir todas las orígenes
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Permitir los métodos HTTP
-header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Permitir las cabeceras
+
+header("Access-Control-Allow-Origin: *");  // Permite solicitudes desde cualquier origen
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");  // Métodos permitidos
+header("Access-Control-Allow-Headers: Content-Type, Authorization");  // Encabezados permitidos
+
+
 include 'conexion.php';
 
 date_default_timezone_set('America/Santiago');
