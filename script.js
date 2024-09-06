@@ -97,6 +97,12 @@ $('#nuevoRegistro').on('click', function() {
     $('#ticket').html('Ticket:');
   
 });
+
+$('#printButton').click(function() {
+    var ticketContent = $('#ticket').html();
+    var printUrl = 'printerplus://send?text=' + encodeURIComponent(ticketContent);
+    window.location = printUrl;
+});
     
 
 });

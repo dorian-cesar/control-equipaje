@@ -37,20 +37,18 @@ echo "<h3>Tickets de Equipaje</h3>";
         for ($i = 1; $i <= $equipaje; $i++) {
         // Mostramos la información del ticket
        // echo "<div class='ticket'>";
-        echo "<h3>Nombre: $nombre</h3>";
-        echo "<h3>RUT: $rut</h3>";
-        echo "<h3>Origen: $origen</h3>";
-        echo "<h3>Destino: $destino</h3>";
-        echo "<h3>Fecha y Hora del Viaje: $fechaHoraViaje</h3>";
-        echo "<h3>Número de Asiento: $asiento</h3>";
-        echo "<h3>Número de Boleto: $servicio</h3>";
-        echo "<h3>Pieza de Equipaje: $i de $equipaje</h3>";
-        echo "<h3>Código de Equipaje: $codigoEquipaje</h3>";
-        echo '<br>';
+        echo "<p>Nombre: $nombre</p>";
+        echo "<p>RUT: $rut</h3>";
+        echo "<p>Origen: $origen</p>";
+        echo "<p>Destino: $destino</p>";
+        echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
+        echo "<p>Número de Asiento: $asiento</p>";
+        echo "<p>Número de Boleto: $servicio</p>";
+        echo "<p>Pieza de Equipaje: $i de $equipaje</p>";
+        echo "<p>Código de Equipaje: $codigoEquipaje</p>";
         echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
         echo '<br>';
         echo '<hr>';
-        echo'<p>----------------------</p>';
        // echo "</div>";
         }
     } else {
