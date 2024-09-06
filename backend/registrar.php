@@ -36,8 +36,8 @@ echo "<h3>Tickets de Equipaje</h3>";
     if ($conn->query($sql) === TRUE) {
         for ($i = 1; $i <= $equipaje; $i++) {
         // Mostramos la información del ticket
-        echo "<div class='ticket'>";
-        echo "<p>Nombre: $nombre";
+       // echo "<div class='ticket'>";
+        echo "<p>Nombre: $nombre</p>";
         echo "<p>RUT: $rut</p>";
         echo "<p>Origen: $origen</p>";
         echo "<p>Destino: $destino</p>";
@@ -46,7 +46,7 @@ echo "<h3>Tickets de Equipaje</h3>";
         echo "<p>Número de Boleto: $servicio</p>";
         echo "<p>Pieza de Equipaje: $i de $equipaje</p>";
         echo "<p>Código de Equipaje: $codigoEquipaje</p>";
-       // echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
+        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
        // echo '<br>';
        // echo '<hr>';
        // echo "</div>";
