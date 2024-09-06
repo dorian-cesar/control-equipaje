@@ -34,6 +34,16 @@ echo "<h3>Tickets de Equipaje</h3>";
 
 
     if ($conn->query($sql) === TRUE) {
+
+        echo "<p>Nombre: $nombre</p>";
+        echo "<p>RUT: $rut</h3>";
+        echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
+        echo "<p>Número de Boleto: $servicio</p>";
+        echo "<p>Piezas de Equipaje: $equipaje</p>";
+        echo "<p>Código de Equipaje: $codigoEquipaje</p>";
+        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=$codigoEquipaje' alt='QR Code' /><br><br>";
+        echo '<br>';
+        echo "<p>--------------------------</p>";
         for ($i = 1; $i <= $equipaje; $i++) {
         // Mostramos la información del ticket
        // echo "<div class='ticket'>";
@@ -46,9 +56,11 @@ echo "<h3>Tickets de Equipaje</h3>";
         echo "<p>Número de Boleto: $servicio</p>";
         echo "<p>Pieza de Equipaje: $i de $equipaje</p>";
         echo "<p>Código de Equipaje: $codigoEquipaje</p>";
-        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
+        echo '<br>';
+        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=$codigoEquipaje' alt='QR Code' /><br><br>";
         echo '<br>';
         echo '<hr>';
+        echo "<p>--------------------------</p>";
        // echo "</div>";
         }
     } else {
