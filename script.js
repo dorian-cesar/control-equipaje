@@ -73,6 +73,7 @@ $(document).ready(function() {
         $.post('https://araucania.wit.la/control-equipaje/backend/registrar.php', formData + '&codigoEquipaje=' + codigoEquipaje, function(data) {
             $('#ticket').html(data);
             window.location='printerplus://send?text='+document.getElementById('ticket').innerHTML;
+            window.history.back();
              
         });
         $('#registrar').hide();
