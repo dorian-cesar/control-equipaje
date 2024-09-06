@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");  // Permite solicitudes desde cualquier origen
+header("Access-Control-Allow-Origin: https://control-equipaje.netlify.app"); // Permite solicitudes desde cualquier origen
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");  // Métodos permitidos
 header("Access-Control-Allow-Headers: Content-Type, Authorization");  // Encabezados permitidos
 
@@ -37,19 +37,19 @@ echo "<h3>Tickets de Equipaje</h3>";
         for ($i = 1; $i <= $equipaje; $i++) {
         // Mostramos la información del ticket
         echo "<div class='ticket'>";
-        echo "Nombre: $nombre<br>";
-        echo "RUT: $rut<br>";
-        echo "Origen: $origen<br>";
-        echo "Destino: $destino<br>";
-        echo "Fecha y Hora del Viaje: $fechaHoraViaje<br>";
-        echo "Número de Asiento: $asiento<br>";
-        echo "Número de Boleto: $servicio<br>";
-        echo "Pieza de Equipaje: $i de $equipaje<br>";
-        echo "Código de Equipaje: $codigoEquipaje<br>";
-        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
-        echo '<br>';
-        echo '<hr>';
-        echo "</div>";
+        echo "<p>Nombre: $nombre";
+        echo "<p>RUT: $rut</p>";
+        echo "<p>Origen: $origen</p>";
+        echo "<p>Destino: $destino</p>";
+        echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
+        echo "<p>Número de Asiento: $asiento</p>";
+        echo "<p>Número de Boleto: $servicio</p>";
+        echo "<p>Pieza de Equipaje: $i de $equipaje</p>";
+        echo "<p>Código de Equipaje: $codigoEquipaje</p>";
+       // echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$codigoEquipaje' alt='QR Code' /><br><br>";
+       // echo '<br>';
+       // echo '<hr>';
+       // echo "</div>";
         }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
