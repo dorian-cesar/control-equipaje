@@ -65,12 +65,14 @@ $(document).ready(function() {
         formData += '&destino=' + configuracionViaje.destino;
         formData += '&fechaHoraViaje=' + configuracionViaje.fechaHoraViaje;
 
+
         var servicio = $('#servicio').val();
         var rut = $('#rut').val();
         var codigoEquipaje = servicio + rut;
 
         $.post('https://araucania.wit.la/control-equipaje/backend/registrar.php', formData + '&codigoEquipaje=' + codigoEquipaje, function(data) {
             $('#ticket').html(data);
+            window.location='printerplus://send?text='+document.getElementById('ticket').innerHTML;
         });
         $('#registrar').hide();
         $('#nuevoRegistro').show();
