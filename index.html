@@ -26,6 +26,12 @@
                 <input type="datetime-local" id="fechaHoraViaje" name="fechaHoraViaje" class="form-control" required>
             </div>
             <button type="button" class="btn btn-primary btn-block" id="guardarViaje">Guardar Configuración del Viaje</button>
+            <button onclick="window.location='printerplus://send?text='+document.getElementById('report').innerHTML;">
+                Send to Printer+
+              </button>
+              <xmp id="report" style="">
+                <h1>Hola Dorian</h1>
+              </xmp>
         </form>
         </div>
 
