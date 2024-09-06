@@ -34,7 +34,7 @@ echo "<h3>Tickets de Equipaje</h3>";
 
 
     if ($conn->query($sql) === TRUE) {
-        echo '<img src="assets/wit-blue.JPG" alt="">';
+        echo '<img src="./assets/wit-blue.JPG" alt="">';
         echo "<p>Nombre: $nombre</p>";
         echo "<p>RUT: $rut</h3>";
         echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
