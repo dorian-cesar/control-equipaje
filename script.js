@@ -84,6 +84,7 @@ $(document).ready(function() {
     $('#finalizarRegistro').on('click', function() {
         configuracionViaje = {};
         $('#viajeForm')[0].reset();
+        $('#equipajeForm')[0].reset();
         alert('Registro finalizado. Puede configurar un nuevo viaje.');
         $('#registro_user').hide();
         $('#configuracion').show();

@@ -34,7 +34,7 @@ echo "<h3>Tickets de Equipaje</h3>";
 
 
     if ($conn->query($sql) === TRUE) {
-
+        echo '<img src="https://www.wit.la/wp-content/uploads/2022/12/222Recurso-2.png" alt="">';
         echo "<p>Nombre: $nombre</p>";
         echo "<p>RUT: $rut</h3>";
         echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
