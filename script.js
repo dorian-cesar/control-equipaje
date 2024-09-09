@@ -70,7 +70,7 @@ $(document).ready(function () {
         var rut = $('#rut').val();
         totalEquipaje = $('#equipaje').val(); // Obtenemos la cantidad total de maletas
 
-        $.post('https://araucania.wit.la/backend/registrar.php', formData, function (data) {
+        $.post('backend/registrar.php', formData, function (data) {
             $('#ticket').html(data);
             window.location = 'printerplus://send?text=' + document.getElementById('ticket').innerHTML;
             $('#imprimirEquipaje').show(); // Mostrar botón para empezar a imprimir maletas
@@ -91,7 +91,7 @@ $(document).ready(function () {
             formData += '&fechaHoraViaje=' + configuracionViaje.fechaHoraViaje;
             // Añadimos el número de la pieza actual
 
-            $.post('https://araucania.wit.la/backend/imprimir_equipaje.php', formData, function (data) {
+            $.post('backend/imprimir_equipaje.php', formData, function (data) {
                 $('#ticket').html(data);
                 window.location = 'printerplus://send?text=' + document.getElementById('ticket').innerHTML;
 
