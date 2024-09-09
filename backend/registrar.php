@@ -1,14 +1,12 @@
 <?php
-
-header("Access-Control-Allow-Origin: https://control-equipaje.netlify.app"); // Permite solicitudes desde cualquier origen
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");  // Métodos permitidos
-header("Access-Control-Allow-Headers: Content-Type, Authorization");  // Encabezados permitidos
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 include 'conexion.php';
-
 date_default_timezone_set('America/Santiago');
 
+// Recibir los datos enviados por POST
 $rut = $_POST['rut'];
 $nombre = $_POST['nombre'];
 $origen = $_POST['origen'];
@@ -19,55 +17,33 @@ $equipaje = $_POST['equipaje'];
 $fechaHoraViaje = $_POST['fechaHoraViaje'];
 $fechaHoraRegistro = date('Y-m-d H:i:s');
 
-// Iniciamos la salida HTML para los tickets
-echo "<h3>Tickets de Equipaje</h3>";
+// Generar un código de equipaje único por pasajero (sin incluir el número de equipaje aquí)
+$codigoEquipajeBase = $servicio . '-' . $rut;
 
-// Generamos y registramos un ticket por cada pieza de equipaje
+// Insertar el registro del pasajero en la base de datos
+$sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro) 
+        VALUES ('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipajeBase', '$fechaHoraViaje', '$fechaHoraRegistro')";
 
-    // Generamos un código de equipaje único por pieza
-    $codigoEquipaje = $servicio . '-' . $rut ;
+if ($conn->query($sql) === TRUE) {
+    // Mostrar los datos del pasajero y el número total de piezas de equipaje
+    echo "<h3>Registro de Pasajero</h3>";
+    echo '<img src="https://araucania.wit.la/control-equipaje/assets/wit-blue.JPG" alt="">';
+    echo "<p>Nombre: $nombre</p>";
+    echo "<p>RUT: $rut</p>";
+   // echo "<p>Origen: $origen</p>";
+   // echo "<p>Destino: $destino</p>";
+  //  echo "<p>Número de Asiento: $asiento</p>";
+    echo "<p>Servicio: $servicio</p>";
+    echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
+    echo "<p>Total de Piezas de Equipaje: $equipaje</p>";
+    echo "<p>Código Base de Equipaje: $codigoEquipajeBase</p>";
+    echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='.$servicio.'" alt="QR Code" />';
+    echo "<p>--------------------------</p>";
+} else {
+    // En caso de error en la inserción
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
-    // Insertamos el ticket en la base de datos
-    
-    $sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro) 
-            VALUES ('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipaje', '$fechaHoraViaje', '$fechaHoraRegistro')";
-
-
-    if ($conn->query($sql) === TRUE) {
-        echo '<img src="./assets/wit-blue.JPG" alt="">';
-        echo "<p>Nombre: $nombre</p>";
-        echo "<p>RUT: $rut</h3>";
-        echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
-        echo "<p>Número de Boleto: $servicio</p>";
-        echo "<p>Piezas de Equipaje: $equipaje</p>";
-        echo "<p>Código de Equipaje: $codigoEquipaje</p>";
-        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=$codigoEquipaje' alt='QR Code' /><br><br>";
-        echo '<br>';
-        echo "<p>--------------------------</p>";
-        for ($i = 1; $i <= $equipaje; $i++) {
-        // Mostramos la información del ticket
-       // echo "<div class='ticket'>";
-        echo "<p>Nombre: $nombre</p>";
-        echo "<p>RUT: $rut</h3>";
-        echo "<p>Origen: $origen</p>";
-        echo "<p>Destino: $destino</p>";
-        echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
-        echo "<p>Número de Asiento: $asiento</p>";
-        echo "<p>Número de Boleto: $servicio</p>";
-        echo "<p>Pieza de Equipaje: $i de $equipaje</p>";
-        echo "<p>Código de Equipaje: $codigoEquipaje</p>";
-        echo '<br>';
-        echo "<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=$codigoEquipaje' alt='QR Code' /><br><br>";
-        echo '<br>';
-        echo '<hr>';
-        echo "<p>--------------------------</p>";
-       // echo "</div>";
-        }
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-
-// Cerramos la conexión a la base de datos
+// Cerrar la conexión
 $conn->close();
 ?>

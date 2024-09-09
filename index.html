@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Equipaje</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
     <div class="container" style="width: 370px;">
         <img src="https://www.wit.la/wp-content/uploads/2022/12/222Recurso-2.png" alt="">
-    
+
         <div id="configuracion">
             <h2 class="mt-4">Configuración del Viaje</h2>
-        <form id="viajeForm">
-            <div class="form-group">
-                <label for="origen">Origen</label>
-                <select id="origen" name="origen" class="form-control" required></select>
-            </div>
-            <div class="form-group">
-                <label for="destino">Destino</label>
-                <select id="destino" name="destino" class="form-control" required></select>
-            </div>
-            <div class="form-group">
-                <label for="fechaHoraViaje">Fecha y Hora del Viaje</label>
-                <input type="datetime-local" id="fechaHoraViaje" name="fechaHoraViaje" class="form-control" required>
-            </div>
-            <button type="button" class="btn btn-primary btn-block" id="guardarViaje">Guardar Configuración del Viaje</button>
-    
+            <form id="viajeForm">
+                <div class="form-group">
+                    <label for="origen">Origen</label>
+                    <select id="origen" name="origen" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="destino">Destino</label>
+                    <select id="destino" name="destino" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="fechaHoraViaje">Fecha y Hora del Viaje</label>
+                    <input type="datetime-local" id="fechaHoraViaje" name="fechaHoraViaje" class="form-control"
+                        required>
+                </div>
+                <button type="button" class="btn btn-primary btn-block" id="guardarViaje">Guardar Configuración del
+                    Viaje</button>
 
-        </form>
+
+            </form>
         </div>
 
         <div id="registro_user" style="display: none;">
@@ -41,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" >
+                    <input type="text" id="nombre" name="nombre" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="asiento">Número de Asiento</label>
@@ -55,18 +59,28 @@
                     <label for="equipaje">Cantidad de Equipaje</label>
                     <input type="number" min="0" id="equipaje" name="equipaje" class="form-control" required>
                 </div>
-                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir Ticket</button>
+                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir
+                    Ticket</button>
             </form>
-            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo Registro</button>
-            <button  type="button" class="btn btn-danger btn-block" id="finalizarRegistro">Finalizar Registros </button>
+            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo
+                Registro</button>
+            <button type="button" class="btn btn-danger btn-block" id="finalizarRegistro">Finalizar Registros </button>
 
             <!-- <button class="btn btn-primary btn-block" onclick="window.location='printerplus://send?text='+document.getElementById('ticket').innerHTML;">
                 Send to Printer+
               </button> -->
-           
-    
-    
+
+
+
             <div id="ticket" class="mt-4">Ticket:</div>
+            <!-- Parte del formulario donde se va a mostrar el ticket de registro -->
+
+   
+             <!-- Botón para iniciar la impresión de los equipajes, inicialmente oculto -->
+             <button id="imprimirEquipaje" class="btn btn-success btn-block" style="display: none;">Imprimir Primer
+                Equipaje</button>
+
+
             <br>
         </div>
     </div>
@@ -74,4 +88,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
