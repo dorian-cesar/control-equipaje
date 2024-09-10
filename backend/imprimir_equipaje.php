@@ -21,15 +21,25 @@ $codigoEquipajePieza = $servicio . '-' . $rut . '-' . $pieza;
 
 // Imprimimos los detalles del ticket de equipaje
 echo "<h4>Ticket de Equipaje $pieza</h4>";
-echo "<p>Nombre: $nombre</p>";
-echo "<p>RUT: $rut</p>";
-echo "<p>Origen: $origen</p>";
-echo "<p>Destino: $destino</p>";
-echo "<p>Número de Asiento: $asiento</p>";
+echo '<img src="https://araucania.wit.la/control-equipaje/assets/andesmar.jpg" alt="">';
 echo "<p>Número de Boleto: $servicio</p>";
+echo '<br>';
+echo "<p>Nombre: $nombre</p>";
+echo '<br>';
+echo "<p>RUT: $rut</p>";
+echo '<br>';
+echo "<p>Origen: $origen</p>";
+echo '<br>';
+echo "<p>Destino: $destino</p>";
+echo '<br>';
+echo "<p>Número de Asiento: $asiento</p>";
+echo '<br>';
 echo "<p>Pieza de Equipaje: $pieza de $equipaje</p>";
+echo '<br>';
 echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
+echo '<br>';
 echo "<p>Código de Equipaje: $codigoEquipajePieza</p>";
+echo '<br>';
 
 // Generamos el código QR para la pieza de equipaje
 echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='.$codigoEquipajePieza.'" alt="QR Code" />';
