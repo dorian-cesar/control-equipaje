@@ -20,8 +20,11 @@ $pieza = $_POST['pieza']; // El número de la pieza de equipaje a imprimir
 $codigoEquipajePieza = $servicio . '-' . $rut . '-' . $pieza;
 
 // Imprimimos los detalles del ticket de equipaje
-echo "<h4>Ticket de Equipaje $pieza</h4>";
+echo '<br>';
 echo '<img src="https://araucania.wit.la/control-equipaje/assets/andesmar.jpg" alt="">';
+echo '<br>';
+echo "<h6>Ticket de Equipaje $pieza</h6>";
+echo '<br>';
 echo "<p>Número de Boleto: $servicio</p>";
 echo '<br>';
 echo "<p>Nombre: $nombre</p>";
@@ -42,6 +45,6 @@ echo "<p>Código de Equipaje: $codigoEquipajePieza</p>";
 echo '<br>';
 
 // Generamos el código QR para la pieza de equipaje
-echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='.$codigoEquipajePieza.'" alt="QR Code" />';
+echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='.$codigoEquipajePieza.'" alt="QR Code" />';
 echo '<br><br>';
 ?>

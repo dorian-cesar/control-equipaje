@@ -26,16 +26,12 @@ $sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, 
 
 if ($conn->query($sql) === TRUE) {
     // Mostrar los datos del pasajero y el número total de piezas de equipaje
+  
+    echo '<img src="https://araucania.wit.la/control-equipaje/assets/andesmar.jpg" alt="">';
     echo "<h4>Comprobante del Usuario</h4>";
-    // echo '<img src="https://araucania.wit.la/control-equipaje/assets/andesmar.jpg" alt="">';
-    echo '<img src="http://localhost/control-equipaje/assets/andesmar.jpg" alt="">';
     echo "<p>#Boleto: $servicio</p>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>RUT: $rut</p>";
-   // echo "<p>Origen: $origen</p>";
-   // echo "<p>Destino: $destino</p>";
-  //  echo "<p>Número de Asiento: $asiento</p>";
-    
     echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
     echo "<p>Total de Piezas de Equipaje: $equipaje</p>";
     echo "<p>Código Base de Equipaje: $codigoEquipajeBase</p>";
