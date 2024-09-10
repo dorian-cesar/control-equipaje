@@ -28,7 +28,7 @@ if ($conn->query($sql) === TRUE) {
     // Mostrar los datos del pasajero y el número total de piezas de equipaje
   
     echo '<img src="https://araucania.wit.la/control-equipaje/assets/andesmar.jpg" alt="">';
-    echo "<h4>Comprobante del Usuario</h4>";
+    echo "<h6>Comprobante del Usuario</h6>";
     echo "<p>#Boleto: $servicio</p>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>RUT: $rut</p>";
