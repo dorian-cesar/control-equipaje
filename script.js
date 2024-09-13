@@ -25,11 +25,36 @@ $(document).ready(function () {
         configuracionViaje.origen = $('#origen').val();
         configuracionViaje.destino = $('#destino').val();
         configuracionViaje.fechaHoraViaje = $('#fechaHoraViaje').val();
+        var viajeData = {
+            origen: $('#origen').val(),
+            destino: $('#destino').val(),
+            fechaHoraViaje: $('#fechaHoraViaje').val(),
+            codServicio: $('#codServicio').val(),
+            patente: $('#patente').val(),
+            conductor: $('#conductor').val()
+        };
 
         if (configuracionViaje.origen && configuracionViaje.destino && configuracionViaje.fechaHoraViaje) {
-            alert('Configuración del viaje guardada.');
-            $('#registro_user').show();
-            $('#configuracion').hide();
+
+            $.ajax({
+                url: 'guardar_viaje.php',
+                type: 'POST',
+                data: viajeData,
+                success: function(response) {
+                    alert(response); // Muestra el mensaje de éxito o error
+                    $('#registro_user').show();
+                    $('#configuracion').hide();
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            }); 
+
+
+
+
+          //  alert('Configuración del viaje guardada.');
+           
         } else {
             alert('Por favor complete todos los campos de configuración del viaje.');
         }

@@ -34,8 +34,6 @@ if ($conn->query($sql) === TRUE) {
     echo "<p>#Boleto: $servicio</p>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>RUT: $rut</p>";
-    echo "<p>Correo: $correo</p>";
-    echo "<p>Telefono: $telefono</p>";
     echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
     echo "<p>Total de Piezas de Equipaje: $equipaje</p>";
     echo "<p>Código Base de Equipaje: $codigoEquipajeBase</p>";
