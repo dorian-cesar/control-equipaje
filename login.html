@@ -56,18 +56,18 @@ $(document).ready(function() {
             type: 'POST',
             data: { correo: email, password: password },
             success: function(response) {
-                let data = JSON.parse(response);
-
-                if (data.status === 'success') {
+               // let data = JSON.parse(response);
+                  
+                if (response.status === 'success') {
                     // Guardar el estado de login en localStorage
                     localStorage.setItem('loggedIn', 'true');
-                    localStorage.setItem('userEmail', data.correo);
+                    localStorage.setItem('userEmail', response.correo);
 
                     // Redirigir al dashboard
                     window.location.href = 'dashboard.html';
                 } else {
-                   // $('#error-msg').text(data.message);
-                   alert('Error');
+                    $('#error-msg').text(response.message);
+                  // alert('Error');
                 }
             },
             error: function() {

@@ -23,7 +23,7 @@
 $(document).ready(function() {
     // Verificar si está logueado
     if (localStorage.getItem('loggedIn') !== 'true') {
-        window.location.href = 'index.html'; // Redirigir al login si no está logueado
+        window.location.href = 'login.html'; // Redirigir al login si no está logueado
     }
 
     // Mostrar el correo del usuario
@@ -32,9 +32,30 @@ $(document).ready(function() {
 
     // Logout
     $('#logoutButton').click(function() {
-        localStorage.removeItem('loggedIn');
-        localStorage.removeItem('userEmail');
-        window.location.href = 'index.html';
+       // localStorage.removeItem('loggedIn');
+       // localStorage.removeItem('userEmail');
+        $.ajax({
+            url: 'backend/logout.php', // Aquí va tu archivo logout.php
+            type: 'POST',
+            success: function(response) {
+                let data = JSON.parse(response);
+
+                if (data.status === 'success') {
+                    // Eliminar el estado de localStorage
+                    localStorage.removeItem('loggedIn');
+                    localStorage.removeItem('userEmail');
+
+                    // Redirigir al login
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error al cerrar la sesión.');
+                }
+            },
+            error: function() {
+                alert('Error al conectar con el servidor.');
+            }
+        });
+        
     });
 });
 </script>

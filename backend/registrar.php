@@ -13,6 +13,8 @@ $origen = $_POST['origen'];
 $destino = $_POST['destino'];
 $asiento = $_POST['asiento'];
 $servicio = $_POST['servicio'];
+$telefono = $_POST['telefono'];
+$correo = $_POST['correo'];
 $equipaje = $_POST['equipaje'];
 $fechaHoraViaje = $_POST['fechaHoraViaje'];
 $fechaHoraRegistro = date('Y-m-d H:i:s');
@@ -21,8 +23,8 @@ $fechaHoraRegistro = date('Y-m-d H:i:s');
 $codigoEquipajeBase = $servicio . '-' . $rut;
 
 // Insertar el registro del pasajero en la base de datos
-$sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro) 
-        VALUES ('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipajeBase', '$fechaHoraViaje', '$fechaHoraRegistro')";
+$sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro,correo, telefono) 
+        VALUES ('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipajeBase', '$fechaHoraViaje', '$fechaHoraRegistro','$correo','$telefono')";
 
 if ($conn->query($sql) === TRUE) {
     // Mostrar los datos del pasajero y el número total de piezas de equipaje
@@ -32,6 +34,8 @@ if ($conn->query($sql) === TRUE) {
     echo "<p>#Boleto: $servicio</p>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>RUT: $rut</p>";
+    echo "<p>Correo: $correo</p>";
+    echo "<p>Telefono: $telefono</p>";
     echo "<p>Fecha y Hora del Viaje: $fechaHoraViaje</p>";
     echo "<p>Total de Piezas de Equipaje: $equipaje</p>";
     echo "<p>Código Base de Equipaje: $codigoEquipajeBase</p>";

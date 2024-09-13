@@ -20,7 +20,7 @@ if (isset($_POST['correo'])) {
         
         if ($stmt->execute()) {
             // Enlace para la recuperación de contraseña
-            $reset_link = "https://tu-dominio.com/reset_password.php?token=" . $reset_token;
+            $reset_link = "localhost/control-equipaje/backend/reset_password.php?token=" . $reset_token;
 
             // Usamos PHPMailer para enviar el correo
             if (enviarCorreoRecuperacion($correo, $reset_link)) {

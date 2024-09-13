@@ -2,39 +2,58 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-include 'conexion.php'; // Tu archivo de conexión a la base de datos
 
-$correo = $_POST['correo'];
-$password = $_POST['password'];
+session_start();
+include 'conexion.php';  // Incluye tu archivo de conexión a la base de datos
 
-if (empty($correo) || empty($password)) {
-    echo json_encode(['status' => 'error', 'message' => 'Por favor, complete todos los campos.']);
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $correo = $_POST['correo'];
+    $password = $_POST['password'];
 
-// Consulta para validar el usuario
-$sql = "SELECT * FROM empresas WHERE correo = ? LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-$result = $stmt->get_result();
+    // Verifica si el usuario existe en la base de datos
+    $query = $conn->prepare("SELECT id, correo, password, sesiones_abiertas FROM empresas WHERE correo = ?");
+    $query->bind_param('s', $correo);
+    $query->execute();
+    $result = $query->get_result();
+    $user = $result->fetch_assoc();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+    if ($user) {
+        // Verificar si la contraseña es correcta
+        if (password_verify($password, $user['password'])) {
+            // Verificar si el usuario ya ha alcanzado el límite de sesiones abiertas
+            $max_sesiones = 2;
+            if ($user['sesiones_abiertas'] >= $max_sesiones) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Has alcanzado el límite de sesiones abiertas. Cierra una sesión antes de continuar.'
+                ]);
+            } else {
+                // Incrementar el contador de sesiones abiertas en la base de datos
+                $new_sesiones_abiertas = $user['sesiones_abiertas'] + 1;
+                $update_query = $conn->prepare("UPDATE empresas SET sesiones_abiertas = ? WHERE id = ?");
+                $update_query->bind_param('ii', $new_sesiones_abiertas, $user['id']);
+                $update_query->execute();
 
-    // Verificar la contraseña (asumiendo que está hasheada con password_hash)
-    if (password_verify($password, $row['password'])) {
-        echo json_encode([
-            'status' => 'success',
-            'correo' => $row['correo']
-        ]);
+                // Iniciar sesión en el servidor
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['correo'] = $user['correo'];
+
+                // Respuesta exitosa
+                echo json_encode([
+                    'status' => 'success',
+                    'correo' => $user['correo']
+                ]);
+            }
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Contraseña incorrecta.'
+            ]);
+        }
     } else {
-        echo json_encode(["status" => "error", "message" => "Contraseña incorrecta."]);
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'El usuario no existe.'
+        ]);
     }
-} else {
-    echo json_encode(["status" => 'error', "message" => 'El correo no está registrado.']);
 }
-
-$stmt->close();
-$conn->close();
-?>

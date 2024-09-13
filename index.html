@@ -31,8 +31,6 @@
                 </div>
                 <button type="button" class="btn btn-primary btn-block" id="guardarViaje">Guardar Configuración del
                     Viaje</button>
-
-
             </form>
         </div>
 
@@ -45,8 +43,18 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control">
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
                 </div>
+                <!-- Nuevos campos añadidos -->
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" class="form-control" required>
+                </div>
+                <!-- Fin de nuevos campos -->
                 <div class="form-group">
                     <label for="asiento">Número de Asiento</label>
                     <input type="number" min="0" id="asiento" name="asiento" class="form-control" required>
@@ -59,28 +67,14 @@
                     <label for="equipaje">Cantidad de Equipaje</label>
                     <input type="number" min="0" id="equipaje" name="equipaje" class="form-control" required>
                 </div>
-                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir
-                    Ticket</button>
+                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir Ticket</button>
             </form>
-            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo
-                Registro</button>
-            <button type="button" class="btn btn-danger btn-block" id="finalizarRegistro">Finalizar Registros </button>
-
-            <!-- <button class="btn btn-primary btn-block" onclick="window.location='printerplus://send?text='+document.getElementById('ticket').innerHTML;">
-                Send to Printer+
-              </button> -->
-
-
+            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo Registro</button>
+            <button type="button" class="btn btn-danger btn-block" id="finalizarRegistro">Finalizar Registros</button>
 
             <div id="ticket" class="mt-4">Ticket:</div>
-            <!-- Parte del formulario donde se va a mostrar el ticket de registro -->
 
-   
-             <!-- Botón para iniciar la impresión de los equipajes, inicialmente oculto -->
-             <button id="imprimirEquipaje" class="btn btn-success btn-block" style="display: none;">Imprimir Primer
-                Equipaje</button>
-
-
+            <button id="imprimirEquipaje" class="btn btn-success btn-block" style="display: none;">Imprimir Primer Equipaje</button>
             <br>
         </div>
     </div>
