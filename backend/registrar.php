@@ -18,13 +18,18 @@ $correo = $_POST['correo'];
 $equipaje = $_POST['equipaje'];
 $fechaHoraViaje = $_POST['fechaHoraViaje'];
 $fechaHoraRegistro = date('Y-m-d H:i:s');
+$patente = $_POST['patente'];
+$conductor = $_POST['conductor'];
+$codServicio = $_POST['codServicio'];
 
 // Generar un código de equipaje único por pasajero (sin incluir el número de equipaje aquí)
 $codigoEquipajeBase = $servicio . '-' . $rut;
 
 // Insertar el registro del pasajero en la base de datos
-$sql = "INSERT INTO registros (rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro,correo, telefono) 
-        VALUES ('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipajeBase', '$fechaHoraViaje', '$fechaHoraRegistro','$correo','$telefono')";
+$sql = "INSERT INTO registros 
+(rut, nombre, origen, destino, asiento, servicio, equipaje, codigo_equipaje, fecha_hora_viaje, fecha_hora_registro,correo, telefono,conductor,patente,cod_servicio) 
+        VALUES 
+('$rut', '$nombre', '$origen', '$destino', '$asiento', '$servicio', '$equipaje', '$codigoEquipajeBase', '$fechaHoraViaje', '$fechaHoraRegistro','$correo','$telefono','$conductor','$patente','$codServicio')";
 
 if ($conn->query($sql) === TRUE) {
     // Mostrar los datos del pasajero y el número total de piezas de equipaje

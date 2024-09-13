@@ -25,37 +25,9 @@ $(document).ready(function () {
         configuracionViaje.origen = $('#origen').val();
         configuracionViaje.destino = $('#destino').val();
         configuracionViaje.fechaHoraViaje = $('#fechaHoraViaje').val();
-        configuracionViaje.codServicio = $('#codServicio').val();
-        configuracionViaje.patente = $('#patente').val();
-        configuracionViaje.conductor = $('#conductor').val();
-    
-           
-        // Verifica si todos los campos tienen valores
-        if (configuracionViaje.origen && configuracionViaje.destino && configuracionViaje.fechaHoraViaje && configuracionViaje.codServicio && configuracionViaje.patente && configuracionViaje.conductor) {
-            var viajeData = {
-                origen: configuracionViaje.origen,
-                destino: configuracionViaje.destino,
-                fechaHoraViaje: configuracionViaje.fechaHoraViaje,
-                codServicio: configuracionViaje.codServicio,
-                patente: configuracionViaje.patente,
-                conductor: configuracionViaje.conductor
-            };
-    
-           // console.log('viajeData:', viajeData); // Asegúrate de que viajeData se imprima
-            
-            // Llamada AJAX
-            // $.ajax({
-            //     url: 'backend/guardar_viaje.php',
-            //     type: 'POST',
-            //     data: viajeData,
-            //     success: function(response) {
-            //         alert(response);
-            //     },
-            //     error: function(_xhr, status, error) {
-            //         console.log(error);
-            //     }
-            // });
-            // alert('Configuración del viaje guardada.');
+
+        if (configuracionViaje.origen && configuracionViaje.destino && configuracionViaje.fechaHoraViaje) {
+            alert('Configuración del viaje guardada.');
             $('#registro_user').show();
             $('#configuracion').hide();
         } else {
@@ -84,7 +56,7 @@ $(document).ready(function () {
     $('#equipajeForm').on('submit', function (e) {
         e.preventDefault();
 
-        if (!configuracionViaje.origen || !configuracionViaje.destino || !configuracionViaje.fechaHoraViaje || !configuracionViaje.codServicio || !configuracionViaje.patente || !configuracionViaje.conductor) {
+        if (!configuracionViaje.origen || !configuracionViaje.destino || !configuracionViaje.fechaHoraViaje) {
             alert('Debe configurar el viaje antes de registrar pasajeros.');
             return;
         }
@@ -93,14 +65,15 @@ $(document).ready(function () {
         formData += '&origen=' + configuracionViaje.origen;
         formData += '&destino=' + configuracionViaje.destino;
         formData += '&fechaHoraViaje=' + configuracionViaje.fechaHoraViaje;
-        formData += '&codServicio=' + configuracionViaje.codServicio;
-        formData += '&patente=' + configuracionViaje.patente;
-        formData += '&conductor=' + configuracionViaje.conductor;
 
+        var servicio = $('#servicio').val();
+        var rut = $('#rut').val();
         totalEquipaje = $('#equipaje').val(); // Obtenemos la cantidad total de maletas
 
-        // Registro en bbdd
-        $.post('backend/registrar.php', formData, function (data) {
+        //registro en bbdd
+        //https://araucania.wit.la/control-equipaje/backend/registrar.php
+
+        $.post('https://araucania.wit.la/control-equipaje/backend/registrar.php', formData, function (data) {
             $('#ticket').html(data);
             window.location = 'printerplus://send?text=' + document.getElementById('ticket').innerHTML;
             $('#imprimirEquipaje').show(); // Mostrar botón para empezar a imprimir maletas
@@ -119,14 +92,11 @@ $(document).ready(function () {
             formData += '&origen=' + configuracionViaje.origen;
             formData += '&destino=' + configuracionViaje.destino;
             formData += '&fechaHoraViaje=' + configuracionViaje.fechaHoraViaje;
-            formData += '&codServicio=' + configuracionViaje.codServicio;
-            formData += '&patente=' + configuracionViaje.patente;
-            formData += '&conductor=' + configuracionViaje.conductor;
-
             // Añadimos el número de la pieza actual
+
             $.post('https://araucania.wit.la/control-equipaje/backend/imprimir_equipaje.php', formData, function (data) {
                 $('#ticket').html(data);
-                $('#imprimirEquipaje').text('Imprimir: ' + (equipajeActual + 1) + ' de ' + totalEquipaje);
+                $('#imprimirEquipaje').text('Imprimir: '+(equipajeActual+1) + ' de ' + totalEquipaje);
                 window.location = 'printerplus://send?text=' + document.getElementById('ticket').innerHTML;
 
                 equipajeActual++; // Avanzamos a la siguiente pieza

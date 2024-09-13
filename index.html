@@ -30,9 +30,8 @@
                         required>
                 </div>
                 <div class="form-group"></div>
-                    <label for="codServicio">Código del Servicio</label>
-                    <input type="text" id="codServicio" name="codServicio" class="form-control" required>
-                </div>
+                <label for="codServicio">Código del Servicio</label>
+                <input type="text" id="codServicio" name="codServicio" class="form-control" required>
                 <div class="form-group">
                     <label for="patente">Patente</label>
                     <input type="text" id="patente" name="patente" class="form-control" required>
@@ -46,6 +45,8 @@
             </form>
         </div>
 
+
+
         <div id="registro_user" style="display: none;">
             <h2 class="mt-4">Registro de Pasajero</h2>
             <form id="equipajeForm">
@@ -55,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required readonly>
                 </div>
                 <!-- Nuevos campos añadidos -->
                 <div class="form-group">
@@ -79,14 +80,17 @@
                     <label for="equipaje">Cantidad de Equipaje</label>
                     <input type="number" min="0" id="equipaje" name="equipaje" class="form-control" required>
                 </div>
-                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir Ticket</button>
+                <button id="registrar" type="submit" class="btn btn-success btn-block">Registrar/Imprimir
+                    Ticket</button>
             </form>
-            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo Registro</button>
+            <button id="nuevoRegistro" type="button" class="btn btn-primary btn-block" style="display: none;">Nuevo
+                Registro</button>
             <button type="button" class="btn btn-danger btn-block" id="finalizarRegistro">Finalizar Registros</button>
 
             <div id="ticket" class="mt-4">Ticket:</div>
 
-            <button id="imprimirEquipaje" class="btn btn-success btn-block" style="display: none;">Imprimir Primer Equipaje</button>
+            <button id="imprimirEquipaje" class="btn btn-success btn-block" style="display: none;">Imprimir Primer
+                Equipaje</button>
             <br>
         </div>
     </div>
