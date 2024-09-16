@@ -20,6 +20,10 @@ $(document).ready(function () {
         $(this).val(rut);
     });
 
+    $('#btnVolver').click(function(){
+        window.history.back(); // Esto te llevará a la página anterior
+    });
+
     // Guardar la configuración del viaje
     $('#guardarViaje').on('click', function () {
         configuracionViaje.origen = $('#origen').val();
