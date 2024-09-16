@@ -9,6 +9,7 @@
 
 }
 #ticket {
+    width: 370px;
     border: 1px solid #9b9b9b;
     padding: 15px;
     border-radius: 5px;
@@ -19,6 +20,7 @@
 }
 
 #equipajeTickets {
+    width: 370px;
     border: 1px solid #9b9b9b;
     padding: 15px;
     border-radius: 5px;

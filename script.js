@@ -28,10 +28,11 @@ $(document).ready(function () {
         configuracionViaje.codServicio = $('#codServicio').val();
         configuracionViaje.patente = $('#patente').val();
         configuracionViaje.conductor = $('#conductor').val();
+        configuracionViaje.rut_conductor = $('#rut_conductor').val();
     
            
         // Verifica si todos los campos tienen valores
-        if (configuracionViaje.origen && configuracionViaje.destino && configuracionViaje.fechaHoraViaje && configuracionViaje.codServicio && configuracionViaje.patente && configuracionViaje.conductor) {
+        if (configuracionViaje.origen && configuracionViaje.destino && configuracionViaje.fechaHoraViaje && configuracionViaje.codServicio && configuracionViaje.patente && configuracionViaje.conductor && configuracionViaje.rut_conductor) {
             var viajeData = {
                 origen: configuracionViaje.origen,
                 destino: configuracionViaje.destino,
@@ -41,23 +42,13 @@ $(document).ready(function () {
                 conductor: configuracionViaje.conductor
             };
     
-           // console.log('viajeData:', viajeData); // Asegúrate de que viajeData se imprima
-            
-            // Llamada AJAX
-            // $.ajax({
-            //     url: 'backend/guardar_viaje.php',
-            //     type: 'POST',
-            //     data: viajeData,
-            //     success: function(response) {
-            //         alert(response);
-            //     },
-            //     error: function(_xhr, status, error) {
-            //         console.log(error);
-            //     }
-            // });
-            // alert('Configuración del viaje guardada.');
+         
             $('#registro_user').show();
+            $('#finalizarRegistro').show();
             $('#configuracion').hide();
+            
+           
+           
         } else {
             alert('Por favor complete todos los campos de configuración del viaje.');
         }
@@ -96,6 +87,7 @@ $(document).ready(function () {
         formData += '&codServicio=' + configuracionViaje.codServicio;
         formData += '&patente=' + configuracionViaje.patente;
         formData += '&conductor=' + configuracionViaje.conductor;
+        formData += '&rut_conductor=' + configuracionViaje.rut_conductor;
 
         totalEquipaje = $('#equipaje').val(); // Obtenemos la cantidad total de maletas
 
