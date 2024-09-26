@@ -21,6 +21,7 @@ $(document).ready(function () {
     });
 
     $('#btnVolver').click(function(){
+        alert('hola');
         window.history.back(); // Esto te llevará a la página anterior
     });
 
@@ -120,7 +121,7 @@ $(document).ready(function () {
             formData += '&conductor=' + configuracionViaje.conductor;
 
             // Añadimos el número de la pieza actual
-            $.post('https://araucania.wit.la/control-equipaje/backend/imprimir_equipaje.php', formData, function (data) {
+            $.post('backend/imprimir_equipaje.php', formData, function (data) {
                 $('#ticket').html(data);
                 $('#imprimirEquipaje').text('Imprimir: ' + (equipajeActual + 1) + ' de ' + totalEquipaje);
                 window.location = 'printerplus://send?text=' + document.getElementById('ticket').innerHTML;

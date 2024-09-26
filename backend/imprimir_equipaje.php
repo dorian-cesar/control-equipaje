@@ -45,6 +45,22 @@ echo "<p>Código de Equipaje: $codigoEquipajePieza</p>";
 echo '<br>';
 
 // Generamos el código QR para la pieza de equipaje
-echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='.$codigoEquipajePieza.'" alt="QR Code" />';
+//echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='.$codigoEquipajePieza.'" alt="QR Code" />';
+//echo '<br><br>';
+
+echo "<p>Por favor:</p>";
+echo "<p>Verifica que tu equipaje esté correctamente identificado.</p>";
+echo "<p>La Empresa no se hace responsable por objetos de valor dentro de la maleta.</p>";
+echo "<p>Revisa que esté bien cerrado.</p>";
+echo "<p>¡Gracias por tu colaboración!</p>";
 echo '<br><br>';
+
+/*
+"Por favor,
+ verifica que tu equipaje esté correctamente identificado.
+  La Empresa no se hace responsable por objetos de valor dentro de la maleta. 
+  Revisa que esté bien cerrado. 
+  ¡Gracias por tu colaboración!"
+   */
+
 ?>
